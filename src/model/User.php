@@ -5,9 +5,9 @@ class User {
     private $userNickName;
     private $hashedPassword;
 
-    public function __construct($userNickName, $password) {
+    public function __construct($userNickName, Password $password) {
         $this->userNickName = $userNickName;
-        $this->hashedPassword = (new Password($password))->md5Hash();
+        $this->hashedPassword = $password->md5Hash();
     }
 
     public function name() {

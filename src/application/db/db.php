@@ -1,6 +1,6 @@
 <?php
 
-class db {
+class DB {
     private $host = "localhost";
     private $user = "root";
     private $pass = "";
@@ -33,8 +33,8 @@ class db {
         return mysqli_insert_id($this->connection);
     }
 
-    public function updateUserPasswordWithId($id, $userNewPassword) {
-        return $this->connection->query("UPDATE users SET hashedPassword = '".(new password($userNewPassword))->md5Hash()."' WHERE id = '".$id."'");
+    public function updateUserPasswordWithId($id,Password $userNewPassword) {
+        return $this->connection->query("UPDATE users SET hashedPassword = '".$userNewPassword->md5Hash()."' WHERE id = '".$id."'");
     }
 
     public function checkLogin(User $User) {
